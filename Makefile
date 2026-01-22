@@ -1,7 +1,5 @@
 CC = gcc
 NAME = philo
-DIRPRINTF = ft_printf
-PRINTF = $(DIRPRINTF)/libftprintf.a
 SRC = philo.c
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -g
@@ -28,21 +26,17 @@ CNT = 0
 
 # --------------------------------------------------------
 
-all : $(PRINTF) $(NAME)
+all : $(NAME)
 
-$(PRINTF) :
-	$(MAKE) -C $(DIRPRINTF) --no-print-directory > /dev/null
 
 $(NAME) : $(OBJ)
-	$(CC) $(OBJ) $(PRINTF) $(CFLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
 
 clean :
 	$(RM) $(OBJ)
-	$(MAKE) -C $(DIRPRINTF) clean --no-print-directory > /dev/null
 
 fclean : clean
 	$(RM) $(NAME)
-	$(MAKE) -C $(DIRPRINTF) fclean --no-print-directory > /dev/null
 
 re : fclean all
 

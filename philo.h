@@ -6,15 +6,15 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:39:55 by david             #+#    #+#             */
-/*   Updated: 2026/01/22 22:45:00 by david            ###   ########.fr       */
+/*   Updated: 2026/01/23 00:08:40 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "ft_printf/ft_printf.h"
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 #endif 
