@@ -1,6 +1,7 @@
 CC = gcc
 NAME = philo
-SRC = philo.c
+SRC = src/philo.c\
+	src/init.c
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf

@@ -6,11 +6,11 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:35:01 by david             #+#    #+#             */
-/*   Updated: 2026/01/28 17:49:06 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/01/28 19:11:04 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 int mail = 0;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -28,8 +28,10 @@ void	*routine()
 
 int main(void)
 {
+	t_all	choose;
 	pthread_t p1, p2;
 
+	init(&choose);
 	if (pthread_create(&p1, NULL, routine, NULL) != 0)
 		return (1);
 	if (pthread_create(&p2, NULL, routine, NULL) != 0)

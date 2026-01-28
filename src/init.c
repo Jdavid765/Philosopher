@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/22 22:39:55 by david             #+#    #+#             */
-/*   Updated: 2026/01/28 17:00:32 by canoduran        ###   ########.fr       */
+/*   Created: 2026/01/28 19:01:54 by canoduran         #+#    #+#             */
+/*   Updated: 2026/01/28 21:07:36 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "../include/philo.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-#include <pthread.h>
-
-#endif 
+void	init(t_all *choose)
+{
+	choose->data.time_eat = 0;
+	choose->data.time_dead = 0;
+	choose->data.time_sleep = 0;
+	choose->data.time_thinks = 0;
+	choose->data.fork = NULL;
+}
