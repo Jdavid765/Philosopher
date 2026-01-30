@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:35:01 by david             #+#    #+#             */
-/*   Updated: 2026/01/30 01:44:55 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/01/30 12:06:02 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	*routine(t_all *choose)
 
 int	philo(t_all *choose)
 {
-	if (pthread_create(&choose->philo.threads[0], NULL, routine(choose), NULL) == -1)
+	if (pthread_create(choose->philo.threads[0], NULL, (void *(*)(void *))routine, choose) == -1)
 		return (-1);
-	if (pthread_create(&choose->philo.threads[1], NULL, routine(choose), NULL) == -1)
+	if (pthread_create(choose->philo.threads[1], NULL, (void *(*)(void *))routine, choose) == -1)
 		return (-1);
 	pthread_join(&choose->philo.threads[0], NULL);
 	pthread_join(&choose->philo.threads[1], NULL);
