@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 19:01:54 by canoduran         #+#    #+#             */
-/*   Updated: 2026/01/30 01:40:17 by canoduran        ###   ########.fr       */
+/*   Created: 2026/01/29 12:05:05 by canoduran         #+#    #+#             */
+/*   Updated: 2026/01/30 01:08:59 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	init(t_all *choose)
+void	ft_free_all(t_all *choose)
 {
-	choose->data.time_eat = 0;
-	choose->data.time_dead = 0;
-	choose->data.time_sleep = 0;
-	choose->data.time_thinks = 0;
-	pthread_mutex_init(&choose->mutex, NULL);
-	choose->philo.threads = NULL;
-	choose->philo.id_philo = NULL;
+	if (choose->number_philo)
+		free(choose->number_philo);
+	if (choose->data.fork)
+		free(choose->data.fork);
 }
