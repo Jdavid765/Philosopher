@@ -2,7 +2,8 @@ CC = gcc
 NAME = philo
 SRC = src/philo.c\
 	src/init.c\
-	src/free.c
+	src/free.c\
+	src/convert_arg
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf

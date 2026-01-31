@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:39:55 by david             #+#    #+#             */
-/*   Updated: 2026/01/30 19:15:25 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/01/31 13:34:29 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,28 @@ typedef struct t_d
 {
 	int		time_eat;
 	int		time_sleep;
+	int		time_thinks;
 	int		time_dead;
-	t_data	data;
 }	t_data;
 
 typedef	struct t_philo
 {
-	int			*id_philo;
-	pthread_t	*threads;
+	int				id_philo;
+	pthread_t		threads;
 }	t_philo;
 
-typedef struct t_al
+typedef	struct t_prog
 {
 	t_philo			*philo;
+	t_data			data;
 	pthread_mutex_t	*mutex;
-}	t_all;
+	int				nb_philo;
+}	t_prog;
 
-void	init(t_all *choose);
-void	ft_free_all(t_all *choose);
+
+void	init(t_prog *prog, char **av);
+void	ft_free_all(t_prog *prog);
+
+int		ft_atoi(char *string);
 
 #endif 

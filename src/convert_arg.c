@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   convert_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 12:05:05 by canoduran         #+#    #+#             */
-/*   Updated: 2026/01/31 13:36:01 by canoduran        ###   ########.fr       */
+/*   Created: 2026/01/31 13:00:23 by canoduran         #+#    #+#             */
+/*   Updated: 2026/01/31 13:06:54 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	ft_free_all(t_prog *prog)
+int		ft_atoi(char *string)
 {
+	int	min;
+	int	res;
 	int	i;
 
+	min = 1;
+	res = 0;
 	i = 0;
-	while (i < prog->nb_philo)
+	while (string[i] == 32 || (string[i] >= 9 && string[i] <= 13))
+		i++;
+	
+	if (string[i] == '+' || string[i] == '-')
 	{
-		free(prog->philo);
+		if (string[i] == '-')
+			min *= -1;
 		i++;
 	}
-	free(prog->philo);
+	while (string[i] >= 48 && string[i] <= 57)
+	{
+		res = res * 10 + (string[i] - '0');
+		i++;
+	}
+	return (res * min);
 }
