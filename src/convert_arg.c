@@ -6,16 +6,16 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 13:00:23 by canoduran         #+#    #+#             */
-/*   Updated: 2026/01/31 13:06:54 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/01 13:42:18 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int		ft_atoi(char *string)
+long int	ft_atoi(char *string)
 {
-	int	min;
-	int	res;
+	long	min;
+	long	res;
 	int	i;
 
 	min = 1;

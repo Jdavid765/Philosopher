@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:35:01 by david             #+#    #+#             */
-/*   Updated: 2026/01/31 13:29:31 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/01 13:48:12 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	*routine(t_prog *prog)
 
 int	ft_philo(t_prog *prog)
 {
-	if (pthread_create(&prog->philo[0].threads, NULL, routine, NULL) != 0)
+	if (pthread_create(&prog->philo[0].threads, NULL, routine(prog), NULL) != 0)
 		return (-1);
-	if (pthread_create(&prog->philo[1].threads, NULL, routine, NULL) != 0)
+	if (pthread_create(&prog->philo[1].threads, NULL, routine(prog), NULL) != 0)
 		return (-1);
-	pthread_join(&prog->philo[0].threads, NULL);
-	pthread_join(&prog->philo[1].threads, NULL);
+	pthread_join(prog->philo[0].threads, NULL);
+	pthread_join(prog->philo[1].threads, NULL);
 	return (0);
 }
 
@@ -43,8 +43,7 @@ int main(int ac, char **av)
 	if (ac > 1)
 	{
 		init(&prog, av + 1);
-		if (ft_philo(&prog) == -1)
-			errors(&prog);
+		ft_philo(&prog);
 		ft_free_all(&prog);
 	}
 	printf("%d\n", mail);
