@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:39:55 by david             #+#    #+#             */
-/*   Updated: 2026/02/02 18:58:03 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/03 00:38:53 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ typedef	struct t_prog
 }	t_prog;
 
 
-int			parsing(t_prog *prog, char **av);
 void		ft_free_all(t_prog *prog);
 
 long int	ft_atoi(char *string);
+int			parsing(t_prog *prog, char **av);
+
+void		*routine(void *arg);
 
 #endif 

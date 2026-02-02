@@ -6,27 +6,11 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:35:01 by david             #+#    #+#             */
-/*   Updated: 2026/02/02 20:39:25 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/03 00:39:40 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
-int mail = 0;
-
-void	*routine(void *arg)
-{
-	t_prog	*prog;
-
-	prog = (t_prog *)arg;
-	pthread_mutex_lock(&prog->mutex[0]);
-	for(int i = 0; i < 1000000; i++)
-	{
-		mail++;
-	}
-	pthread_mutex_unlock(&prog->mutex[0]);
-	return (NULL);
-}
 
 int	ft_philo(t_prog *prog)
 {
@@ -62,6 +46,5 @@ int main(int ac, char **av)
 	}
 	else
 		printf("Use the command with this: nb_philosophers, t_die, t_eat, t_sleep, nb_eat\n");
-	printf("%d\n", mail);
 	return (0);
 }
