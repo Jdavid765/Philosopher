@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:35:01 by david             #+#    #+#             */
-/*   Updated: 2026/02/02 18:43:35 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/02 20:39:25 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,21 @@ void	*routine(void *arg)
 
 int	ft_philo(t_prog *prog)
 {
-	if (pthread_create(&prog->philo[0].threads, NULL, routine, prog) != 0)
-		return (-1);
-	if (pthread_create(&prog->philo[1].threads, NULL, routine, prog) != 0)
-		return (-1);
-	pthread_join(prog->philo[0].threads, NULL);
-	pthread_join(prog->philo[1].threads, NULL);
+	int	i;
+
+	i = 0;
+	while (i < prog->nb_philo)
+	{
+		if (pthread_create(&prog->philo[i].threads, NULL, routine, prog) != 0)
+			return (-1);
+		i++;
+	}
+	i = 0;
+	while (i < prog->nb_philo)
+	{
+		pthread_join(prog->philo[i].threads, NULL);
+		i++;
+	}
 	return (0);
 }
 
