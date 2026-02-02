@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 12:05:05 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/01 13:50:28 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/02 18:50:15 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 
 void	ft_free_all(t_prog *prog)
 {
+	int	i;
+
+	i = 0;
 	if (!prog)
 		return ;
 	if (prog->mutex)
 	{
-		pthread_mutex_destroy(&prog->mutex[0]);
+		while (i < prog->nb_philo)
+		{
+			pthread_mutex_destroy(&prog->mutex[i]);
+			i++;
+		}
 		free(prog->mutex);
 		prog->mutex = NULL;
 	}
