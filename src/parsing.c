@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 13:00:23 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/02 19:13:22 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/06 14:36:07 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,23 @@ int	check_arg(t_prog *prog, char **av)
 	prog->data.time_dead = ft_atoi(av[1]);
 	if (prog->data.time_dead == 201)
 		return (-1);
+	prog->data.fork = malloc(sizeof(int) * prog->nb_philo);
+	if(prog->data.fork)
+		return (-1);
+	init_fork(prog);
 	return (0);
+}
+
+void	init_fork(t_prog *prog)
+{
+	int	i;
+
+	i = 0;
+	while (i < prog->nb_philo)
+	{
+		prog->data.fork[i] = 1;
+		i++;
+	}
 }
 
 int	init(t_prog *prog, char **av)

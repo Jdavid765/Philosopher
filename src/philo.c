@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:35:01 by david             #+#    #+#             */
-/*   Updated: 2026/02/03 00:39:40 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/06 14:41:26 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int main(int ac, char **av)
 		ft_free_all(&prog);
 	}
 	else
-		printf("Use the command with this: nb_philosophers, t_die, t_eat, t_sleep, nb_eat\n");
+		printf("Use command with this: nb_philo, t_die, t_eat, t_sleep, nb_eat\n");
 	return (0);
 }
