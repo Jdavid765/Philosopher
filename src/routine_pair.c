@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   routine_pair.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:32:35 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/06 15:29:32 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/06 23:59:11 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	mail = 0;
 
-void	*routine(void *arg)
+void	*take_fork(void *arg)
 {
 	t_prog	*prog;
 
@@ -27,4 +27,28 @@ void	*routine(void *arg)
 	pthread_mutex_unlock(&prog->fork[0]);
 	printf("%d\n", mail);
 	return (NULL);
+}
+
+int	routine_pair(t_prog *prog)
+{
+	int	i;
+
+	i = 0;
+	while (i < prog->nb_philo)
+	{
+		if (pthread_create(&prog->philo[i].threads, NULL, take_fork, prog) != 0)
+			return (-1);
+		if (pthread_mutex_lock(&prog->fork[0]) == 0)
+			printf("open\n");
+		else
+			printf("thinkings\n");
+		i++;
+	}
+	i = 0;
+	while (i < prog->nb_philo)
+	{
+		pthread_join(prog->philo[i].threads, NULL);
+		i++;
+	}
+	return (0);
 }

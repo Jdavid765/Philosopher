@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:35:01 by david             #+#    #+#             */
-/*   Updated: 2026/02/06 15:49:10 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/06 23:52:07 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 int	ft_philo(t_prog *prog)
 {
-	int	i;
+	int	pair_impair;
 
-	i = 0;
-	while (i < prog->nb_philo)
+	pair_impair = prog->nb_philo % 2;
+	if (pair_impair != 1)
 	{
-		if (pthread_create(&prog->philo[i].threads, NULL, routine, prog) != 0)
+		if (routine_pair(prog) == -1)
 			return (-1);
-		i++;
 	}
-	i = 0;
-	while (i < prog->nb_philo)
+	else
 	{
-		pthread_join(prog->philo[i].threads, NULL);
-		i++;
+		if (routine_impair(prog) == -1)
+			return (-1);
 	}
 	return (0);
 }

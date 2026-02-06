@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:39:55 by david             #+#    #+#             */
-/*   Updated: 2026/02/06 15:42:40 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/06 23:50:54 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void		ft_free_all(t_prog *prog);
 long int	ft_atoi(char *string);
 int			parsing(t_prog *prog, char **av);
 
-void		*routine(void *arg);
+int			routine_pair(t_prog *prog);
+int			routine_impair(t_prog *prog);
+
+void	*take_fork(void *arg);
 
 #endif 

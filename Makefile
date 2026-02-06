@@ -3,7 +3,8 @@ NAME = philo
 SRC = src/philo.c\
 	src/free.c\
 	src/parsing.c\
-	src/routine.c
+	src/routine_pair.c\
+	src/routine_impair.c
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
