@@ -6,17 +6,11 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 12:05:05 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/06 14:40:30 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/06 15:29:06 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
-void	next_free(t_prog *prog)
-{
-	if (prog->data.fork)
-		free(prog->data.fork);
-}
 
 void	ft_free_all(t_prog *prog)
 {
@@ -25,20 +19,19 @@ void	ft_free_all(t_prog *prog)
 	i = 0;
 	if (!prog)
 		return ;
-	if (prog->mutex)
+	if (prog->fork)
 	{
 		while (i < prog->nb_philo)
 		{
-			pthread_mutex_destroy(&prog->mutex[i]);
+			pthread_mutex_destroy(&prog->fork[i]);
 			i++;
 		}
-		free(prog->mutex);
-		prog->mutex = NULL;
+		free(prog->fork);
+		prog->fork = NULL;
 	}
 	if (prog->philo)
 	{
 		free(prog->philo);
 		prog->philo = NULL;
 	}
-	next_free(prog);
 }
