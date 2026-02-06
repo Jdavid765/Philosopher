@@ -21,6 +21,7 @@ First time you need to compile the makefile with this -> make
 
 ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
 
+### Informations
 
 number_of_philosophers: The number of philosophers and also the number of forks.
 
@@ -32,6 +33,7 @@ time_to_sleep: Time (in ms) spent sleeping.
 
 [number_of_times_each_philosopher_must_eat] (Optional): If all philosophers eat at least this many times, the simulation stops.
 
+### Example 
 ./philo 4 410 200 200
 
 If you want clean you need to use this command -> make fclean
