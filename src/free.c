@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 12:05:05 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/06 15:29:06 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/07 12:44:50 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,6 @@ void	ft_free_all(t_prog *prog)
 		free(prog->philo);
 		prog->philo = NULL;
 	}
+	if (prog->data.fork)
+		free(prog->data.fork);
 }

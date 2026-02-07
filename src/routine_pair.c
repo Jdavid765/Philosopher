@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:32:35 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/06 23:59:11 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/07 12:45:51 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	*take_fork(void *arg)
 
 	prog = (t_prog *)arg;
 	pthread_mutex_lock(&prog->fork[0]);
+	prog->data.fork[0] = 0;
 	for(int i = 0; i < 1000000; i++)
 	{
 		mail++;
 	}
+	prog->data.fork[0] = 1;
 	pthread_mutex_unlock(&prog->fork[0]);
 	printf("%d\n", mail);
 	return (NULL);
@@ -38,8 +40,8 @@ int	routine_pair(t_prog *prog)
 	{
 		if (pthread_create(&prog->philo[i].threads, NULL, take_fork, prog) != 0)
 			return (-1);
-		if (pthread_mutex_lock(&prog->fork[0]) == 0)
-			printf("open\n");
+		if (prog->data.fork[0] == 0)
+			printf("can't take the fork\n");
 		else
 			printf("thinkings\n");
 		i++;

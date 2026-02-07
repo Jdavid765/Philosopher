@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:35:01 by david             #+#    #+#             */
-/*   Updated: 2026/02/06 23:52:07 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/07 12:47:08 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,11 @@
 
 int	ft_philo(t_prog *prog)
 {
-	int	pair_impair;
+	// int	pair_impair;
 
-	pair_impair = prog->nb_philo % 2;
-	if (pair_impair != 1)
-	{
-		if (routine_pair(prog) == -1)
-			return (-1);
-	}
-	else
-	{
-		if (routine_impair(prog) == -1)
-			return (-1);
-	}
+	// pair_impair = prog->nb_philo % 2;
+	if (routine_pair(prog) == -1)
+		return (-1);
 	return (0);
 }
 

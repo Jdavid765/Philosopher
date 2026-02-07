@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:39:55 by david             #+#    #+#             */
-/*   Updated: 2026/02/06 23:50:54 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/07 12:46:29 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct t_d
 	int		time_sleep;
 	int		time_thinks;
 	int		time_dead;
+	int		*fork;
 }	t_data;
 
 typedef	struct t_philo
@@ -49,8 +50,7 @@ long int	ft_atoi(char *string);
 int			parsing(t_prog *prog, char **av);
 
 int			routine_pair(t_prog *prog);
-int			routine_impair(t_prog *prog);
 
-void	*take_fork(void *arg);
+void		*take_fork(void *arg);
 
 #endif 
