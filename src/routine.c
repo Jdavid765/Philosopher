@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:32:35 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/13 17:10:19 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/13 17:51:06 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_thinking(t_philo *philo)
 
 void	ft_sleep(t_philo *philo)
 {
-	usleep(philo->data->time_sleep);
 	print_message("Is sleeping", philo);
+	usleep(philo->data->time_sleep * 1000);
 }
 
 void	ft_eat(t_philo *philo)
@@ -29,12 +29,12 @@ void	ft_eat(t_philo *philo)
 	print_message("Has taken fork", philo);
 	pthread_mutex_lock(philo->right_fork);
 	print_message("Has taken fork", philo);
-	print_message("Is eating", philo);
-	usleep(philo->data->time_eat * 1000);
 	pthread_mutex_lock(&philo->meal_lock);
 	philo->nb_eat++;
 	philo->last_meal = get_time();
 	pthread_mutex_unlock(&philo->meal_lock);
+	print_message("Is eating", philo);
+	usleep(philo->data->time_eat * 1000);
 	pthread_mutex_unlock(&philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
@@ -45,7 +45,7 @@ void	*routine(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->id_philo % 2 == 0)
-		usleep(10);
+		usleep(3);
 	while (philo->data->routine_active)
 	{
 		ft_eat(philo);
