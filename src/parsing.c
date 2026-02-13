@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 13:00:23 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/13 01:47:34 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/13 17:03:19 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	check_arg(t_prog *prog, char **av, int ac)
 		return (-1);
 	if (ac == 6)
 	{
+		prog->flag_nb_eat = 1;
 		prog->data.nb_eat = ft_atoi(av[4]);
 		if (prog->data.nb_eat == 201)
 			return (-1);

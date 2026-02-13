@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:39:55 by david             #+#    #+#             */
-/*   Updated: 2026/02/13 01:51:56 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/13 17:07:53 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct t_prog
 	t_data			data;
 	int				nb_philo;
 	int				*all_philo_eat;
+	int				flag_nb_eat;
 }	t_prog;
 
 void		ft_free_all(t_prog *prog);
