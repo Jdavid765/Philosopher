@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 12:05:05 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/13 01:43:23 by canoduran        ###   ########.fr       */
+/*   Created: 2026/01/28 21:02:52 by canoduran         #+#    #+#             */
+/*   Updated: 2026/02/13 01:07:06 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	ft_free_all(t_prog *prog)
+void	print_message(char *string, t_philo *philo)
 {
-	if (!prog)
-		return ;
-	if (prog->philo)
-	{
-		free(prog->philo);
-		prog->philo = NULL;
-		free(prog->all_philo_eat);
-		prog->all_philo_eat = NULL;
-	}
+	long int	timestamp;
+
+	timestamp = get_time() - philo->data->time_start;
+	printf("%ld, %s = %d\n", timestamp, string, philo->id_philo);
 }
