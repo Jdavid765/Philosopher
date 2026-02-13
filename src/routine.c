@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:32:35 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/13 01:40:54 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/13 15:21:32 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->id_philo % 2 == 0)
+		usleep(10);
 	while (philo->data->routine_active)
 	{
 		ft_eat(philo);
