@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:17:08 by canoduran         #+#    #+#             */
-/*   Updated: 2026/02/13 17:04:50 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/14 23:59:38 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,19 @@ int	all_eat(t_prog *prog)
 	return (0);
 }
 
+void	stop_simulation(t_philo *philo, char *message)
+{
+	pthread_mutex_lock(&philo->data->routine_lock);
+	philo->data->routine_active = 0;
+	pthread_mutex_unlock(&philo->data->routine_lock);
+	if (message)
+	{
+		pthread_mutex_lock(&philo->data->print_lock);
+		printf("%s\n", message);
+		pthread_mutex_unlock(&philo->data->print_lock);
+	}
+}
+
 void	ft_supervisor(t_prog *prog)
 {
 	int	i;
@@ -63,16 +76,15 @@ void	ft_supervisor(t_prog *prog)
 		result = time_eat(&prog->philo[i], prog);
 		if (result == 1)
 		{
-			print_message("Died", &prog->philo[i]);
-			prog->data.routine_active = 0;
+			print_message("died", &prog->philo[i]);
+			stop_simulation(&prog->philo[i], NULL);
 			break ;
 		}
 		else if (result == 10)
 			prog->all_philo_eat[i] = 1;
-		if (all_eat(prog) == 0)
+		if (prog->flag_nb_eat == 1 && all_eat(prog) == 0)
 		{
-			printf("All philo eat\n");
-			prog->data.routine_active = 0;
+			stop_simulation(&prog->philo[i], "All philosophers eat");
 			break ;
 		}
 		i++;

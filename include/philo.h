@@ -6,7 +6,7 @@
 /*   By: canoduran <canoduran@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 22:39:55 by david             #+#    #+#             */
-/*   Updated: 2026/02/13 17:07:53 by canoduran        ###   ########.fr       */
+/*   Updated: 2026/02/15 00:00:57 by canoduran        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct t_d
 	int				nb_eat;
 	int				routine_active;
 	long int		time_start;
+	pthread_mutex_t	print_lock;
+	pthread_mutex_t	routine_lock;
 }	t_data;
 typedef struct t_philo
 {
@@ -62,4 +64,6 @@ void		ft_supervisor(t_prog *prog);
 void		print_message(char *string, t_philo *philo);
 
 long int	get_time(void);
+
+void		stop_simulation(t_philo *philo, char *message);
 #endif 

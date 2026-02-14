@@ -34,6 +34,9 @@ time_to_sleep: Time (in ms) spent sleeping.
 [number_of_times_each_philosopher_must_eat] (Optional): If all philosophers eat at least this many times, the simulation stops.
 
 ### Example 
-./philo 4 410 200 200
+./philo 4 410 200 200  if you don't put the nb_meal
+
+
+./philo 4 410 200 200 5 if you put the nb_meal
 
 If you want clean you need to use this command -> make fclean
