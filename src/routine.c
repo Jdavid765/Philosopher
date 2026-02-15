@@ -62,7 +62,7 @@ void	*routine(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->id_philo % 2 == 0)
-		usleep(5);
+		usleep(3);
 	while (check_routine_active(philo))
 	{
 		ft_eat(philo);
